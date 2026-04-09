@@ -1,4 +1,4 @@
-package conlesferroroi.rolepolicemanager;
+package conlesferroroi.rolepolicemanagerMain;
 
 /**
  *
