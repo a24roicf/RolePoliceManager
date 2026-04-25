@@ -106,7 +106,7 @@ public class UsuariosControlador {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Email");
-        modelo.addColumn("Rol");
+        modelo.addColumn("Nombre");
 
         for (Usuario u : lista) {
             modelo.addRow(new Object[]{

@@ -1,8 +1,9 @@
 package controlador;
 
-import BD.UsuarioBD;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
 import vista.PrincipalVista;
 import vista.UsuariosVista;
 
@@ -13,10 +14,11 @@ import vista.UsuariosVista;
 public class PrincipalControlador {
 
     private PrincipalVista vista;
-    private UsuarioBD usuario;
+    private Usuario usuario;
 
-    public PrincipalControlador(PrincipalVista vista) {
+    public PrincipalControlador(PrincipalVista vista, Usuario usuario) {
         this.vista = vista;
+        this.usuario = usuario;
         this.vista.addAdministrarUsuariosListener(getbtnAdministrarUsuarios());
     }
 
@@ -24,9 +26,13 @@ public class PrincipalControlador {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UsuariosVista vista = new UsuariosVista();
-                new UsuariosControlador(vista);
-                vista.setVisible(true);
+                if (usuario.getNivelPermiso() >= 3) {
+                    UsuariosVista vista = new UsuariosVista();
+                    new UsuariosControlador(vista);
+                    vista.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(vista, "Acceso denegado");
+                }
             }
         };
         return al;

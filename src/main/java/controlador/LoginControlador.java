@@ -35,7 +35,7 @@ public class LoginControlador {
                     vista.dispose();
 
                     PrincipalVista pv = new PrincipalVista(u);
-                    new PrincipalControlador(pv);
+                    new PrincipalControlador(pv, u);
                     pv.setLocationRelativeTo(null);
                     pv.setVisible(true);
 
