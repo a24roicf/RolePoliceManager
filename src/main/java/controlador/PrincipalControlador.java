@@ -15,7 +15,7 @@ public class PrincipalControlador {
     private PrincipalVista vista;
     private UsuarioBD usuario;
 
-    public void PrincipalControlador(PrincipalVista vista) {
+    public PrincipalControlador(PrincipalVista vista) {
         this.vista = vista;
         this.vista.addAdministrarUsuariosListener(getbtnAdministrarUsuarios());
     }

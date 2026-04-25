@@ -22,31 +22,24 @@ public class UsuariosControlador {
         this.vista = vista;
         this.bd = new UsuarioBD();
 
-        vista.addBtnCargarListener(cargarUsuarios());
         vista.addBtnAgregarListener(agregarUsuario());
         vista.addBtnEliminarListener(eliminarUsuario());
+        vista.addBtnEditarListener(editarUsuario());
+
+        cargarTabla();
     }
 
-    //CARGAR USUARIOS EN LA TABLA
-    private ActionListener cargarUsuarios() {
+    //EDITAR USUARIOS EN LA TABLA
+    private ActionListener editarUsuario() {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<Usuario> lista = bd.obtenerUsuarios();
+                int fila = vista.getUsuariosTable().getSelectedRow();
 
-                DefaultTableModel modelo = new DefaultTableModel();
-                modelo.addColumn("ID");
-                modelo.addColumn("Email");
-                modelo.addColumn("Nombre");
-
-                for (Usuario usuario : lista) {
-                    modelo.addRow(new Object[]{
-                        usuario.getIdUsuario(),
-                        usuario.getEmail(),
-                        usuario.getNombreRol()
-                    });
+                if (fila == -1) {
+                    JOptionPane.showMessageDialog(vista, "Selecciona un usuario");
+                    return;
                 }
-                vista.getUsuariosTable().setModel(modelo);
             }
         };
         return al;
@@ -72,6 +65,7 @@ public class UsuariosControlador {
                 bd.insertarUsuario(u);
 
                 JOptionPane.showMessageDialog(vista, "Usuario creado");
+                cargarTabla();
             }
         };
         return al;
@@ -89,13 +83,39 @@ public class UsuariosControlador {
                     return;
                 }
 
+                int confirm = JOptionPane.showConfirmDialog(vista, "¿Seguro que quieres eliminar este usuario?", "Confirmar", JOptionPane.YES_NO_OPTION);
+
+                if (confirm != JOptionPane.YES_OPTION) {
+                    return;
+                }
                 int id = (int) vista.getUsuariosTable().getValueAt(fila, 0);
 
                 bd.eliminarUsuario(id);
 
                 JOptionPane.showMessageDialog(vista, "Usuario eliminado");
+
+                cargarTabla();
             }
         };
         return al;
+    }
+
+    private void cargarTabla() {
+        List<Usuario> lista = bd.obtenerUsuarios();
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
+        modelo.addColumn("Email");
+        modelo.addColumn("Rol");
+
+        for (Usuario u : lista) {
+            modelo.addRow(new Object[]{
+                u.getIdUsuario(),
+                u.getEmail(),
+                u.getNombreRol()
+            });
+        }
+
+        vista.getUsuariosTable().setModel(modelo);
     }
 }

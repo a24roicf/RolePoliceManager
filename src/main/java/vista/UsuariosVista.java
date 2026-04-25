@@ -17,6 +17,7 @@ public class UsuariosVista extends javax.swing.JFrame {
     public UsuariosVista() {
         initComponents();
         this.setTitle("Role Police Manager - Gestión de Usuarios");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,27 +32,24 @@ public class UsuariosVista extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         UsuariosTable = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
-        btnCargar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         UsuariosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(UsuariosTable);
 
         btnAgregar.setText("Agregar");
 
-        btnCargar.setText("Cargar");
+        btnEditar.setText("Editar");
 
         btnEliminar.setBackground(new java.awt.Color(204, 0, 0));
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -69,7 +67,7 @@ public class UsuariosVista extends javax.swing.JFrame {
                         .addGap(0, 159, Short.MAX_VALUE)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCargar)
+                        .addComponent(btnEditar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAgregar)))
                 .addContainerGap())
@@ -80,7 +78,7 @@ public class UsuariosVista extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
-                    .addComponent(btnCargar)
+                    .addComponent(btnEditar)
                     .addComponent(btnEliminar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,8 +88,8 @@ public class UsuariosVista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void addBtnCargarListener(ActionListener al) {
-        btnCargar.addActionListener(al);
+    public void addBtnEditarListener(ActionListener al) {
+        btnEditar.addActionListener(al);
     }
 
     public void addBtnAgregarListener(ActionListener al) {
@@ -113,7 +111,7 @@ public class UsuariosVista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable UsuariosTable;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCargar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
