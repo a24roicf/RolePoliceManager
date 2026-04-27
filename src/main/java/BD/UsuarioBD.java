@@ -67,31 +67,28 @@ public class UsuarioBD {
     }
 
     //OBTENER USUARIO POR ID
-    public Usuario obtenerPorId(int id) {
-        String sql = "SELECT * FROM Usuario WHERE id_usuario = ?";
+    public Usuario obtenerUsuarioPorId(int id) {
         Usuario u = null;
 
-        try (Connection conexion = ConexionBD.conectar(); PreparedStatement ps = conexion.prepareStatement(sql)) {
+        String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+
+        try (Connection con = ConexionBD.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 u = new Usuario();
-
                 u.setIdUsuario(rs.getInt("id_usuario"));
                 u.setNombreRol(rs.getString("nombre_rol"));
                 u.setEmail(rs.getString("email"));
-                u.setPassword(rs.getString("password"));
-                u.setIdRango(rs.getInt("id_rango"));
-                u.setFechaIngreso(rs.getDate("fecha_ingreso"));
-                u.setFechaUltimoAscenso(rs.getDate("fecha_ultimo_ascenso"));
                 u.setEstado(rs.getString("estado"));
                 u.setNivelPermiso(rs.getInt("nivel_permiso"));
+                u.setIdRango(rs.getInt("id_rango"));
             }
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return u;

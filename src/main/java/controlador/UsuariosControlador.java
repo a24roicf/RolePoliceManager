@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 import vista.UsuariosVista;
+import vista.CrearModificarUsuariosDialogVista;
+import controlador.CrearModificarUsuariosControlador;
 
 /**
  *
@@ -40,6 +42,19 @@ public class UsuariosControlador {
                     JOptionPane.showMessageDialog(vista, "Selecciona un usuario");
                     return;
                 }
+
+                int id = (int) vista.getUsuariosTable().getValueAt(fila, 0);
+
+                Usuario u = bd.obtenerUsuarioPorId(id);
+
+                CrearModificarUsuariosDialogVista dialog = new CrearModificarUsuariosDialogVista(vista, true);
+
+                CrearModificarUsuariosControlador cmuc = new CrearModificarUsuariosControlador(dialog, u);
+
+                dialog.setLocationRelativeTo(vista);
+                dialog.setVisible(true);
+
+                cargarTabla();
             }
         };
         return al;
@@ -50,21 +65,14 @@ public class UsuariosControlador {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String email = JOptionPane.showInputDialog("Email:");
-                String pass = JOptionPane.showInputDialog("Password:");
+                CrearModificarUsuariosDialogVista dialog
+                        = new CrearModificarUsuariosDialogVista(vista, true);
 
-                Usuario u = new Usuario();
-                u.setEmail(email);
-                u.setPassword(pass);
-                u.setNombreRol("Agente");
-                u.setIdRango(1);
-                u.setFechaIngreso(new java.util.Date());
-                u.setEstado("activo");
-                u.setNivelPermiso(1);
+                new CrearModificarUsuariosControlador(dialog);
 
-                bd.insertarUsuario(u);
+                dialog.setLocationRelativeTo(vista);
+                dialog.setVisible(true);
 
-                JOptionPane.showMessageDialog(vista, "Usuario creado");
                 cargarTabla();
             }
         };

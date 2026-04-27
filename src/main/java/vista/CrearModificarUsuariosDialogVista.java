@@ -4,12 +4,18 @@
  */
 package vista;
 
+import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.JComboBox;
+import modelo.Permiso;
+import modelo.Rango;
+
 /**
  *
  * @author alumno
  */
 public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CrearModificarUsuariosDialogVista.class.getName());
 
     /**
@@ -62,12 +68,6 @@ public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
         txtNombre.setText("");
 
         txtEmail.setText("");
-
-        cbRango.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cbPermisos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,14 +136,85 @@ public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    public String getTxtEmail() {
+        return this.txtEmail.getText();
+    }
+
+    public void setTxtEmail(String txtEmail) {
+        this.txtEmail.setText(txtEmail);
+    }
+
+    public String getTxtNombre() {
+        return this.txtNombre.getText();
+    }
+
+    public void setTxtNombre(String txtNombre) {
+        this.txtNombre.setText(txtNombre);
+    }
+
+    public void cbEstadoActionListener(ActionListener listener) {
+        this.cbEstado.addActionListener(listener);
+    }
+
+    public void setEstado(String estado) {
+        cbEstado.setSelectedItem(estado);
+    }
+
+    public void setEstados(String[] estados) {
+        cbEstado.removeAllItems();
+        for (String e : estados) {
+            cbEstado.addItem(e);
+        }
+    }
+
+    public String getEstado() {
+        return this.cbEstado.getItemAt(this.cbEstado.getSelectedIndex());
+    }
+
+    public void setRangos(List<Rango> rangos) {
+        cbRango.removeAllItems();
+        for (modelo.Rango r : rangos) {
+            cbRango.addItem(r);
+        }
+    }
+
+    public modelo.Rango getRangoSeleccionado() {
+        return (modelo.Rango) cbRango.getSelectedItem();
+    }
+
+    public void setPermisos(List<Permiso> permisos) {
+        cbPermisos.removeAllItems();
+        for (modelo.Permiso p : permisos) {
+            cbPermisos.addItem(p);
+        }
+    }
+
+    public Permiso getPermisoSeleccionado() {
+        return (Permiso) cbPermisos.getSelectedItem();
+    }
+
+    public void addAceptarListener(ActionListener al) {
+        btnAceptar.addActionListener(al);
+    }
+
+    public void addCancelarListener(ActionListener al) {
+        btnCancelar.addActionListener(al);
+    }
+
+    public JComboBox<Rango> getRangoCombo() {
+        return cbRango;
+    }
+
+    public JComboBox<modelo.Permiso> getPermisoCombo() {
+        return cbPermisos;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cbEstado;
-    private javax.swing.JComboBox<String> cbPermisos;
-    private javax.swing.JComboBox<String> cbRango;
+    private javax.swing.JComboBox<Permiso> cbPermisos;
+    private javax.swing.JComboBox<Rango> cbRango;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel estadoLabel;
     private javax.swing.JLabel nombreLabel;
