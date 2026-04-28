@@ -115,12 +115,22 @@ public class UsuariosControlador {
         modelo.addColumn("ID");
         modelo.addColumn("Email");
         modelo.addColumn("Nombre");
+        modelo.addColumn("Fecha Ingreso");
+        modelo.addColumn("Rango");
+        modelo.addColumn("Fecha Ultimo Ascenso");
+        modelo.addColumn("Estado");
+        modelo.addColumn("Permisos");
 
         for (Usuario u : lista) {
             modelo.addRow(new Object[]{
                 u.getIdUsuario(),
                 u.getEmail(),
-                u.getNombreRol()
+                u.getNombreRol(),
+                u.getFechaIngreso(),
+                u.getIdRango(),
+                u.getFechaUltimoAscenso(),
+                u.getEstado(),
+                u.getNivelPermiso()
             });
         }
 
