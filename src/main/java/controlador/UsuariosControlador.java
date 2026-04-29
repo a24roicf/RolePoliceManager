@@ -11,6 +11,9 @@ import vista.UsuariosVista;
 import vista.CrearModificarUsuariosDialogVista;
 import controlador.CrearModificarUsuariosControlador;
 import BD.RangoBD;
+import java.text.SimpleDateFormat;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import modelo.Rango;
 import javax.swing.table.TableColumnModel;
 
@@ -23,6 +26,7 @@ public class UsuariosControlador {
     private UsuariosVista vista;
     private UsuarioBD bd;
     private RangoBD rangoBD;
+    private List<Usuario> listaOriginal;
 
     public UsuariosControlador(UsuariosVista vista) {
         this.vista = vista;
@@ -32,6 +36,7 @@ public class UsuariosControlador {
         vista.addBtnAgregarListener(agregarUsuario());
         vista.addBtnEliminarListener(eliminarUsuario());
         vista.addBtnEditarListener(editarUsuario());
+        vista.addBuscarListener(filtrar());
 
         cargarTabla();
     }
@@ -114,9 +119,12 @@ public class UsuariosControlador {
     }
 
     private void cargarTabla() {
-        List<Usuario> lista = bd.obtenerUsuarios();
-        List<Rango> rangos = rangoBD.obtenerRangos();
+        listaOriginal = bd.obtenerUsuarios();
+        pintarTabla(listaOriginal);
+    }
 
+    private void pintarTabla(List<Usuario> lista) {
+        List<Rango> rangos = rangoBD.obtenerRangos();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Email");
@@ -128,50 +136,93 @@ public class UsuariosControlador {
         modelo.addColumn("Permisos");
 
         for (Usuario u : lista) {
-        // Buscar el nombre del rango
-        String nombreRango = "";
-        for (Rango r : rangos) {
-            if (r.getIdRango() == u.getIdRango()) {
-                nombreRango = r.getNombre();
-                break;
+            // Buscar el nombre del rango
+            String nombreRango = "";
+            for (Rango r : rangos) {
+                if (r.getIdRango() == u.getIdRango()) {
+                    nombreRango = r.getNombre();
+                    break;
+                }
             }
-        }
-        
-        // Convertir nivel de permiso a texto
-        String nivelPermisoTexto = "";
-        switch (u.getNivelPermiso()) {
-            case 1:
-                nivelPermisoTexto = "Oficial";
-                break;
-            case 2:
-                nivelPermisoTexto = "Encargado";
-                break;
-            case 3:
-                nivelPermisoTexto = "Administrador";
-                break;
-            default:
-                nivelPermisoTexto = "Desconocido";
-                break;
-        }
-        
-        // Formatear fechas
-        String fechaIngreso = u.getFechaIngreso() != null ? 
-            new java.text.SimpleDateFormat("dd/MM/yyyy").format(u.getFechaIngreso()) : "";
-        String fechaUltimoAscenso = u.getFechaUltimoAscenso() != null ? 
-            new java.text.SimpleDateFormat("dd/MM/yyyy").format(u.getFechaUltimoAscenso()) : "";
-        
-        modelo.addRow(new Object[]{
-            u.getIdUsuario(),
-            u.getEmail(),
-            u.getNombreRol(),
-            nombreRango,
-            fechaIngreso,
-            fechaUltimoAscenso,
-            u.getEstado(),
-            nivelPermisoTexto
-        });
+
+            // Convertir nivel de permiso a texto
+            String nivelPermisoTexto = "";
+            switch (u.getNivelPermiso()) {
+                case 1:
+                    nivelPermisoTexto = "Oficial";
+                    break;
+                case 2:
+                    nivelPermisoTexto = "Encargado";
+                    break;
+                case 3:
+                    nivelPermisoTexto = "Administrador";
+                    break;
+                default:
+                    nivelPermisoTexto = "Desconocido";
+                    break;
+            }
+
+            // Formatear fechas: modificamos la fecha para que se vea simple, si es null el campo sale vacio
+            /*String fechaIngreso;
+            if (u.getFechaIngreso() != null) {
+                fechaIngreso = new SimpleDateFormat("dd/MM/yyyy").format(u.getFechaIngreso());
+            } else {
+                fechaIngreso = "";
+            }
+
+            String fechaUltimoAscenso;
+            if (u.getFechaUltimoAscenso() != null) {
+                fechaUltimoAscenso = new SimpleDateFormat("dd/MM/yyyy").format(u.getFechaUltimoAscenso());
+            } else {
+                fechaUltimoAscenso = "";
+            }*/
+
+            modelo.addRow(new Object[]{
+                u.getIdUsuario(),
+                u.getEmail(),
+                u.getNombreRol(),
+                nombreRango,
+                u.getFechaIngreso()/*fechaIngreso*/,
+                u.getFechaUltimoAscenso()/*fechaUltimoAscenso*/,
+                u.getEstado(),
+                nivelPermisoTexto
+            });
         }
 
         vista.getUsuariosTable().setModel(modelo);
+    }
+
+    private DocumentListener filtrar() {
+        return new DocumentListener() {
+
+            private void filtrarLista() {
+                String texto = vista.getTextoBusqueda().toLowerCase();
+
+                List<Usuario> filtrada = new java.util.ArrayList<>();
+
+                for (Usuario u : listaOriginal) {
+                    if (u.getEmail().toLowerCase().contains(texto)
+                            || u.getNombreRol().toLowerCase().contains(texto)) {
+                        filtrada.add(u);
+                    }
+                }
+                pintarTabla(filtrada);
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                filtrarLista();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                filtrarLista();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                filtrarLista();
+            }
+        };
     }
 }
