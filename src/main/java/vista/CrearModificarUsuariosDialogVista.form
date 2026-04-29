@@ -57,6 +57,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="cbEstado" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="fechaUltimoAscensoLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="dateChooserFechaUltimoAscenso" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="fechaIngresoLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="dateChooserFechaIngreso" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -90,7 +100,17 @@
                   <Component id="permisosLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbPermisos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="98" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="fechaIngresoLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="dateChooserFechaIngreso" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="fechaUltimoAscensoLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="dateChooserFechaUltimoAscenso" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -164,6 +184,26 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Permiso&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="fechaIngresoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha ingreso:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="fechaUltimoAscensoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha ultimo ascenso:"/>
+      </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="dateChooserFechaIngreso">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
+      </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="dateChooserFechaUltimoAscenso">
+      <Properties>
+        <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

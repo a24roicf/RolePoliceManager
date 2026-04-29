@@ -9,6 +9,7 @@ import vista.CrearModificarUsuariosDialogVista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Permiso;
@@ -71,6 +72,9 @@ public class CrearModificarUsuariosControlador {
                 modelo.Permiso permiso = vista.getPermisoSeleccionado();
                 Rango rango = vista.getRangoSeleccionado();
 
+                Date fechaIngreso = vista.getFechaIngreso();
+                Date fechaUltimoAscenso = vista.getFechaUltimoAscenso();
+
                 if (nombre.isEmpty() || email.isEmpty()) {
                     JOptionPane.showMessageDialog(vista, "Rellene todos los campos");
                     return;
@@ -84,17 +88,20 @@ public class CrearModificarUsuariosControlador {
                     u.setEstado(estado);
                     u.setNivelPermiso(permiso.getNivel());
                     u.setIdRango(rango.getIdRango());
-                    u.setFechaIngreso(new java.util.Date());
+                    u.setFechaIngreso(fechaIngreso != null ? fechaIngreso : new java.util.Date());  //Si no colocas fecha inicial pone la actual
+                    u.setFechaUltimoAscenso(fechaUltimoAscenso);
 
                     usuarioBD.insertarUsuario(u);
 
-                //EDITAR
+                    //EDITAR
                 } else {
                     usuarioEditar.setNombreRol(nombre);
                     usuarioEditar.setEmail(email);
                     usuarioEditar.setEstado(estado);
                     usuarioEditar.setNivelPermiso(permiso.getNivel());
                     usuarioEditar.setIdRango(rango.getIdRango());
+                    usuarioEditar.setFechaIngreso(fechaIngreso);
+                    usuarioEditar.setFechaUltimoAscenso(fechaUltimoAscenso);
 
                     usuarioBD.actualizarUsuario(usuarioEditar);
                 }
@@ -110,6 +117,8 @@ public class CrearModificarUsuariosControlador {
         vista.setTxtNombre(usuarioEditar.getNombreRol());
         vista.setTxtEmail(usuarioEditar.getEmail());
         vista.setEstado(usuarioEditar.getEstado());
+        vista.setFechaIngreso(usuarioEditar.getFechaIngreso());
+        vista.setFechaUltimoAscenso(usuarioEditar.getFechaUltimoAscenso());
 
         //Seleccionar rango
         for (int i = 0; i < vista.getRangoCombo().getItemCount(); i++) {

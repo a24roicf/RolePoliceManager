@@ -3,6 +3,7 @@ package BD;
 import modelo.Usuario;
 
 import java.sql.*;
+import static java.sql.Types.DATE;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,8 @@ public class UsuarioBD {
 
     //INSERTAR USUARIO
     public boolean insertarUsuario(Usuario u) {
-        String sql = "INSERT INTO Usuario (nombre_rol, email, password, id_rango, fecha_ingreso, estado, nivel_permiso)"
-                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Usuario (nombre_rol, email, password, id_rango, fecha_ingreso, fecha_ultimo_ascenso, estado, nivel_permiso)"
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = ConexionBD.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -24,8 +25,15 @@ public class UsuarioBD {
             ps.setString(3, u.getPassword());
             ps.setInt(4, u.getIdRango());
             ps.setDate(5, new java.sql.Date(u.getFechaIngreso().getTime()));
-            ps.setString(6, u.getEstado());
-            ps.setInt(7, u.getNivelPermiso());
+
+            if (u.getFechaUltimoAscenso() != null) {
+                ps.setDate(6, new Date(u.getFechaUltimoAscenso().getTime()));
+            } else {
+                ps.setNull(6, DATE);
+            }
+
+            ps.setString(7, u.getEstado());
+            ps.setInt(8, u.getNivelPermiso());
 
             ps.executeUpdate();
             return true;
@@ -85,6 +93,9 @@ public class UsuarioBD {
                 u.setEstado(rs.getString("estado"));
                 u.setNivelPermiso(rs.getInt("nivel_permiso"));
                 u.setIdRango(rs.getInt("id_rango"));
+                u.setFechaIngreso(rs.getDate("fecha_ingreso"));
+                u.setFechaUltimoAscenso(rs.getDate("fecha_ultimo_ascenso"));
+                u.setPassword(rs.getString("password"));
             }
 
         } catch (Exception e) {
@@ -96,17 +107,24 @@ public class UsuarioBD {
 
     //ACTUALIZAR USUARIO
     public boolean actualizarUsuario(Usuario u) {
-        String sql = "UPDATE Usuario SET nombre_rol=?, email=?, password=?, id_rango=?, estado=?, nivel_permiso=? WHERE id_usuario=?";
+        String sql = "UPDATE Usuario SET nombre_rol=?, email=?, id_rango=?, fecha_ingreso=?, fecha_ultimo_ascenso=?, estado=?, nivel_permiso=? WHERE id_usuario=?";
 
         try (Connection conexion = ConexionBD.conectar(); PreparedStatement ps = conexion.prepareStatement(sql)) {
 
             ps.setString(1, u.getNombreRol());
             ps.setString(2, u.getEmail());
-            ps.setString(3, u.getPassword());
-            ps.setInt(4, u.getIdRango());
-            ps.setString(5, u.getEstado());
-            ps.setInt(6, u.getNivelPermiso());
-            ps.setInt(7, u.getIdUsuario());
+            ps.setInt(3, u.getIdRango());
+            ps.setDate(4, new java.sql.Date(u.getFechaIngreso().getTime()));
+
+            if (u.getFechaUltimoAscenso() != null) {
+                ps.setDate(5, new java.sql.Date(u.getFechaUltimoAscenso().getTime()));
+            } else {
+                ps.setNull(5, java.sql.Types.DATE);
+            }
+
+            ps.setString(6, u.getEstado());
+            ps.setInt(7, u.getNivelPermiso());
+            ps.setInt(8, u.getIdUsuario());
 
             ps.executeUpdate();
             return true;
@@ -187,6 +205,7 @@ public class UsuarioBD {
                 u.setPassword(rs.getString("password"));
                 u.setIdRango(rs.getInt("id_rango"));
                 u.setFechaIngreso(rs.getDate("fecha_ingreso"));
+                u.setFechaUltimoAscenso(rs.getDate("fecha_ultimo_ascenso"));
                 u.setEstado(rs.getString("estado"));
                 u.setNivelPermiso(rs.getInt("nivel_permiso"));
 

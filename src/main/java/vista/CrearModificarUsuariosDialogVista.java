@@ -5,6 +5,7 @@
 package vista;
 
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import modelo.Permiso;
@@ -24,7 +25,7 @@ public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
     public CrearModificarUsuariosDialogVista(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setTitle("Role Police Manager - Crea/ModificaUsuario");
+        this.setTitle("Role Police Manager - Crea/Modifica Usuario");
     }
 
     /**
@@ -48,6 +49,10 @@ public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
         cbRango = new javax.swing.JComboBox<>();
         cbEstado = new javax.swing.JComboBox<>();
         cbPermisos = new javax.swing.JComboBox<>();
+        fechaIngresoLabel = new javax.swing.JLabel();
+        fechaUltimoAscensoLabel = new javax.swing.JLabel();
+        dateChooserFechaIngreso = new com.toedter.calendar.JDateChooser();
+        dateChooserFechaUltimoAscenso = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -68,6 +73,14 @@ public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
         txtNombre.setText("");
 
         txtEmail.setText("");
+
+        fechaIngresoLabel.setText("Fecha ingreso:");
+
+        fechaUltimoAscensoLabel.setText("Fecha ultimo ascenso:");
+
+        dateChooserFechaIngreso.setDateFormatString("dd/MM/yyyy");
+
+        dateChooserFechaUltimoAscenso.setDateFormatString("dd/MM/yyyy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,7 +113,15 @@ public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(estadoLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fechaUltimoAscensoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateChooserFechaUltimoAscenso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fechaIngresoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateChooserFechaIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -126,7 +147,15 @@ public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(permisosLabel)
                     .addComponent(cbPermisos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaIngresoLabel)
+                    .addComponent(dateChooserFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fechaUltimoAscensoLabel)
+                    .addComponent(dateChooserFechaUltimoAscenso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
@@ -209,14 +238,34 @@ public class CrearModificarUsuariosDialogVista extends javax.swing.JDialog {
         return cbPermisos;
     }
 
+    public Date getFechaIngreso() {
+        return dateChooserFechaIngreso.getDate();
+    }
+
+    public void setFechaIngreso(Date fecha) {
+        dateChooserFechaIngreso.setDate(fecha);
+    }
+
+    public Date getFechaUltimoAscenso() {
+        return dateChooserFechaUltimoAscenso.getDate();
+    }
+
+    public void setFechaUltimoAscenso(Date fecha) {
+        dateChooserFechaUltimoAscenso.setDate(fecha);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<Permiso> cbPermisos;
     private javax.swing.JComboBox<Rango> cbRango;
+    private com.toedter.calendar.JDateChooser dateChooserFechaIngreso;
+    private com.toedter.calendar.JDateChooser dateChooserFechaUltimoAscenso;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel estadoLabel;
+    private javax.swing.JLabel fechaIngresoLabel;
+    private javax.swing.JLabel fechaUltimoAscensoLabel;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JLabel permisosLabel;
     private javax.swing.JLabel rangoLabel;
