@@ -16,7 +16,7 @@ public class RangoBD {
     public List<Rango> obtenerRangos() {
         List<Rango> lista = new ArrayList<>();
 
-        String sql = "SELECT id_rango, nombre, nivel, salario_base FROM rango";
+        String sql = "SELECT id_rango, nombre, nivel, salario_base FROM Rango";
 
         try (Connection con = ConexionBD.conectar(); PreparedStatement ps = con.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
 

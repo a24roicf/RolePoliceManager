@@ -10,7 +10,7 @@ public class ConexionBD {
     public static Connection conectar() {
         try {
             String url = "jdbc:mariadb://localhost:3306/rolepolicemanager";
-            return DriverManager.getConnection(url, "root", "abc123.");
+            return DriverManager.getConnection(url, "usuario", "password");
         } catch (SQLException e) {
             return null;
         }

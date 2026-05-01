@@ -78,7 +78,7 @@ public class UsuarioBD {
     public Usuario obtenerUsuarioPorId(int id) {
         Usuario u = null;
 
-        String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+        String sql = "SELECT * FROM Usuario WHERE id_usuario = ?";
 
         try (Connection con = ConexionBD.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -144,38 +144,38 @@ public class UsuarioBD {
             con.setAutoCommit(false);
 
             //usuario_division
-            PreparedStatement ps1 = con.prepareStatement("DELETE FROM usuario_division WHERE id_usuario = ?");
+            PreparedStatement ps1 = con.prepareStatement("DELETE FROM Usuario_Division WHERE id_usuario = ?");
             ps1.setInt(1, id);
             ps1.executeUpdate();
 
             //usuario_licencia
-            PreparedStatement ps2 = con.prepareStatement("DELETE FROM usuario_licencia WHERE id_usuario = ?");
+            PreparedStatement ps2 = con.prepareStatement("DELETE FROM Usuario_Licencia WHERE id_usuario = ?");
             ps2.setInt(1, id);
             ps2.executeUpdate();
 
             //log_actividad
-            PreparedStatement ps3 = con.prepareStatement("DELETE FROM log_actividad WHERE id_usuario = ?");
+            PreparedStatement ps3 = con.prepareStatement("DELETE FROM Log_actividad WHERE id_usuario = ?");
             ps3.setInt(1, id);
             ps3.executeUpdate();
 
             //informe (evaluador o evaluado)
-            PreparedStatement ps4 = con.prepareStatement("DELETE FROM informe WHERE id_evaluador = ? OR id_evaluado = ?");
+            PreparedStatement ps4 = con.prepareStatement("DELETE FROM Informe WHERE id_evaluador = ? OR id_evaluado = ?");
             ps4.setInt(1, id);
             ps4.setInt(2, id);
             ps4.executeUpdate();
 
             //anuncio
-            PreparedStatement ps5 = con.prepareStatement("DELETE FROM anuncio WHERE id_autor = ?");
+            PreparedStatement ps5 = con.prepareStatement("DELETE FROM Anuncio WHERE id_autor = ?");
             ps5.setInt(1, id);
             ps5.executeUpdate();
 
             //division (si es responsable → poner NULL)
-            PreparedStatement ps6 = con.prepareStatement("UPDATE division SET id_responsable = NULL WHERE id_responsable = ?");
+            PreparedStatement ps6 = con.prepareStatement("UPDATE Division SET id_responsable = NULL WHERE id_responsable = ?");
             ps6.setInt(1, id);
             ps6.executeUpdate();
 
             //borrar usuario
-            PreparedStatement psFinal = con.prepareStatement("DELETE FROM usuario WHERE id_usuario = ?");
+            PreparedStatement psFinal = con.prepareStatement("DELETE FROM Usuario WHERE id_usuario = ?");
             psFinal.setInt(1, id);
             psFinal.executeUpdate();
 
