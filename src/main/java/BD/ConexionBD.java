@@ -3,7 +3,7 @@ package BD;
 import java.sql.*;
 /**
  *
- * @author alumno
+ * @author roi conles ferro
  */
 public class ConexionBD {
     

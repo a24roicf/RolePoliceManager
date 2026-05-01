@@ -1,5 +1,6 @@
 package controlador;
 
+import BD.LogBD;
 import BD.UsuarioBD;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +20,7 @@ import javax.swing.table.TableColumnModel;
 
 /**
  *
- * @author alumno
+ * @author roi conles ferro
  */
 public class UsuariosControlador {
 
@@ -27,11 +28,15 @@ public class UsuariosControlador {
     private UsuarioBD bd;
     private RangoBD rangoBD;
     private List<Usuario> listaOriginal;
+    private Usuario usuarioLogueado;
+    private LogBD logBD;
 
-    public UsuariosControlador(UsuariosVista vista) {
+    public UsuariosControlador(UsuariosVista vista, Usuario usuario) {
         this.vista = vista;
         this.bd = new UsuarioBD();
         this.rangoBD = new RangoBD();
+        this.usuarioLogueado = usuario;
+        this.logBD = new LogBD();
 
         vista.addBtnAgregarListener(agregarUsuario());
         vista.addBtnEliminarListener(eliminarUsuario());
@@ -59,7 +64,7 @@ public class UsuariosControlador {
 
                 CrearModificarUsuariosDialogVista dialog = new CrearModificarUsuariosDialogVista(vista, true);
 
-                CrearModificarUsuariosControlador cmuc = new CrearModificarUsuariosControlador(dialog, u);
+                CrearModificarUsuariosControlador cmuc = new CrearModificarUsuariosControlador(dialog, u, usuarioLogueado);
 
                 dialog.setLocationRelativeTo(vista);
                 dialog.setVisible(true);
@@ -78,7 +83,7 @@ public class UsuariosControlador {
                 CrearModificarUsuariosDialogVista dialog
                         = new CrearModificarUsuariosDialogVista(vista, true);
 
-                new CrearModificarUsuariosControlador(dialog);
+                new CrearModificarUsuariosControlador(dialog, usuarioLogueado);
 
                 dialog.setLocationRelativeTo(vista);
                 dialog.setVisible(true);
@@ -109,6 +114,9 @@ public class UsuariosControlador {
                 int id = (int) vista.getUsuariosTable().getValueAt(fila, 0);
 
                 bd.eliminarUsuario(id);
+                
+                //LOG
+                logBD.insertarLog(usuarioLogueado.getIdUsuario(), "BAJA", "usuarios", "Eliminó usuario ID: " + id);
 
                 JOptionPane.showMessageDialog(vista, "Usuario eliminado");
 

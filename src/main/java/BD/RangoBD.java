@@ -9,7 +9,7 @@ import modelo.Rango;
 
 /**
  *
- * @author alumno
+ * @author roi conles ferro
  */
 public class RangoBD {
 

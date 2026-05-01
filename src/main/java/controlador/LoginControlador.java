@@ -1,5 +1,6 @@
 package controlador;
 
+import BD.LogBD;
 import BD.UsuarioBD;
 import modelo.Usuario;
 import vista.LoginVista;
@@ -32,6 +33,9 @@ public class LoginControlador {
                 if (u != null) {
                     JOptionPane.showMessageDialog(vista, "Login correcto");
 
+                    //Registro de inicio de sesion para cada usuario
+                    new LogBD().insertarLog(u.getIdUsuario(), "LOGIN", "login", "Inicio de sesión");
+                    
                     vista.dispose();
 
                     PrincipalVista pv = new PrincipalVista(u);

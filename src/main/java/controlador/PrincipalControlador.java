@@ -9,7 +9,7 @@ import vista.UsuariosVista;
 
 /**
  *
- * @author alumno
+ * @author roi conles ferro
  */
 public class PrincipalControlador {
 
@@ -28,7 +28,7 @@ public class PrincipalControlador {
             public void actionPerformed(ActionEvent e) {
                 if (usuario.getNivelPermiso() >= 3) {
                     UsuariosVista vista = new UsuariosVista();
-                    new UsuariosControlador(vista);
+                    new UsuariosControlador(vista, usuario);
                     vista.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(vista, "Acceso denegado");

@@ -1,5 +1,6 @@
 package controlador;
 
+import BD.LogBD;
 import BD.RangoBD;
 import BD.UsuarioBD;
 import modelo.Rango;
@@ -20,16 +21,20 @@ public class CrearModificarUsuariosControlador {
     private UsuarioBD usuarioBD;
     private RangoBD rangoBD;
     private Usuario usuarioEditar;
+    private Usuario usuarioLogueado;
+    private LogBD logBD;
 
-    public CrearModificarUsuariosControlador(CrearModificarUsuariosDialogVista vista) {
-        this(vista, null);
+    public CrearModificarUsuariosControlador(CrearModificarUsuariosDialogVista vista, Usuario usuarioLogueado) {
+        this(vista, null, usuarioLogueado);
     }
 
-    public CrearModificarUsuariosControlador(CrearModificarUsuariosDialogVista vista, Usuario usuario) {
+    public CrearModificarUsuariosControlador(CrearModificarUsuariosDialogVista vista, Usuario usuarioEditar, Usuario usuarioLogueado) {
         this.vista = vista;
         this.usuarioBD = new UsuarioBD();
         this.rangoBD = new RangoBD();
-        this.usuarioEditar = usuario;
+        this.usuarioEditar = usuarioEditar;
+        this.usuarioLogueado = usuarioLogueado;
+        this.logBD = new LogBD();
 
         cargarCombos();
 
@@ -93,6 +98,15 @@ public class CrearModificarUsuariosControlador {
 
                     usuarioBD.insertarUsuario(u);
 
+                    //LOG
+                    if (usuarioBD.insertarUsuario(u)) {
+                        logBD.insertarLog(
+                                usuarioLogueado.getIdUsuario(),
+                                "ALTA",
+                                "usuarios",
+                                "Creó usuario: " + u.getEmail());
+                    }
+
                     //EDITAR
                 } else {
                     usuarioEditar.setNombreRol(nombre);
@@ -104,6 +118,14 @@ public class CrearModificarUsuariosControlador {
                     usuarioEditar.setFechaUltimoAscenso(fechaUltimoAscenso);
 
                     usuarioBD.actualizarUsuario(usuarioEditar);
+
+                    if (usuarioBD.actualizarUsuario(usuarioEditar)) {
+                        logBD.insertarLog(
+                                usuarioLogueado.getIdUsuario(),
+                                "MODIFICACION",
+                                "usuarios",
+                                "Editó usuario ID: " + usuarioEditar.getIdUsuario());
+                    }
                 }
 
                 JOptionPane.showMessageDialog(vista, "Guardado correctamente");
