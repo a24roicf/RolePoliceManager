@@ -8,7 +8,7 @@ import java.sql.*;
  */
 public class LogBD {
     public void insertarLog(int idUsuario, String tipoAccion, String modulo, String descripcion){
-        String sql = "INSERT INTO Log_Actividad (id_usuario, tipo_accion, modulo, fecha_hora, descripcion) VALUES (?,?,?, NOW(), ?)";
+        String sql = "INSERT INTO Log_actividad (id_usuario, tipo_accion, modulo, fecha_hora, descripcion) VALUES (?,?,?, NOW(), ?)";
         
         try (Connection con = ConexionBD.conectar(); PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, idUsuario);

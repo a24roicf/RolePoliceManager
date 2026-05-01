@@ -29,6 +29,7 @@ public class PrincipalVista extends javax.swing.JFrame {
 
         bienvenidaLabel = new javax.swing.JLabel();
         btnAdministrarUsuarios = new javax.swing.JButton();
+        btnLogs = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,15 +38,18 @@ public class PrincipalVista extends javax.swing.JFrame {
         btnAdministrarUsuarios.setText("Administrar Usuarios");
         btnAdministrarUsuarios.addActionListener(this::btnAdministrarUsuariosActionPerformed);
 
+        btnLogs.setText("Registro de logs");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bienvenidaLabel)
-                    .addComponent(btnAdministrarUsuarios))
+                    .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(254, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -55,7 +59,9 @@ public class PrincipalVista extends javax.swing.JFrame {
                 .addComponent(bienvenidaLabel)
                 .addGap(18, 18, 18)
                 .addComponent(btnAdministrarUsuarios)
-                .addContainerGap(237, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnLogs)
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         pack();
@@ -68,9 +74,14 @@ public class PrincipalVista extends javax.swing.JFrame {
     public void addAdministrarUsuariosListener(ActionListener al){
         btnAdministrarUsuarios.addActionListener(al);
     }
+    
+    public void addRegistroLogsListener(ActionListener al){
+        btnLogs.addActionListener(al);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JButton btnAdministrarUsuarios;
+    private javax.swing.JButton btnLogs;
     // End of variables declaration//GEN-END:variables
 }
