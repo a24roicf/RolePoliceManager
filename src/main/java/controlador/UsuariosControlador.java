@@ -10,13 +10,10 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 import vista.UsuariosVista;
 import vista.CrearModificarUsuariosDialogVista;
-import controlador.CrearModificarUsuariosControlador;
 import BD.RangoBD;
-import java.text.SimpleDateFormat;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import modelo.Rango;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
