@@ -30,6 +30,7 @@ public class PrincipalVista extends javax.swing.JFrame {
         bienvenidaLabel = new javax.swing.JLabel();
         btnAdministrarUsuarios = new javax.swing.JButton();
         btnLogs = new javax.swing.JButton();
+        btnAnuncios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,6 +40,8 @@ public class PrincipalVista extends javax.swing.JFrame {
         btnAdministrarUsuarios.addActionListener(this::btnAdministrarUsuariosActionPerformed);
 
         btnLogs.setText("Registro de logs");
+
+        btnAnuncios.setText("Anuncios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,7 +53,9 @@ public class PrincipalVista extends javax.swing.JFrame {
                     .addComponent(bienvenidaLabel)
                     .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(btnAnuncios)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -58,7 +63,9 @@ public class PrincipalVista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(bienvenidaLabel)
                 .addGap(18, 18, 18)
-                .addComponent(btnAdministrarUsuarios)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdministrarUsuarios)
+                    .addComponent(btnAnuncios))
                 .addGap(18, 18, 18)
                 .addComponent(btnLogs)
                 .addContainerGap(197, Short.MAX_VALUE))
@@ -71,17 +78,30 @@ public class PrincipalVista extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAdministrarUsuariosActionPerformed
 
-    public void addAdministrarUsuariosListener(ActionListener al){
+    public void addBtnAdministrarUsuariosListener(ActionListener al){
         btnAdministrarUsuarios.addActionListener(al);
     }
     
-    public void addRegistroLogsListener(ActionListener al){
+    public void addBtnRegistroLogsListener(ActionListener al){
         btnLogs.addActionListener(al);
+    }
+    
+    public void btnAdministrarUsuariosEnable(boolean enable){
+        btnAdministrarUsuarios.setEnabled(enable);
+    }
+    
+    public void btnRegistroLogsEnable(boolean enable){
+        btnLogs.setEnabled(enable);
+    }
+    
+    public void addBtnAnunciosListener(ActionListener al){
+        btnAnuncios.addActionListener(al);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JButton btnAdministrarUsuarios;
+    private javax.swing.JButton btnAnuncios;
     private javax.swing.JButton btnLogs;
     // End of variables declaration//GEN-END:variables
 }

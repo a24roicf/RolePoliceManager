@@ -30,7 +30,9 @@
                   <Component id="btnAdministrarUsuarios" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnLogs" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="254" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <Component id="btnAnuncios" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="121" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,7 +42,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="bienvenidaLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnAdministrarUsuarios" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAdministrarUsuarios" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAnuncios" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLogs" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="197" max="32767" attributes="0"/>
@@ -67,6 +72,11 @@
     <Component class="javax.swing.JButton" name="btnLogs">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registro de logs"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAnuncios">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Anuncios"/>
       </Properties>
     </Component>
   </SubComponents>
