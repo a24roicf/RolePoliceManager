@@ -18,7 +18,7 @@ public class AnuncioBD {
     }
 
     public boolean insertarAnuncio(Anuncio anuncio) {
-        String sql = "INSERT INTO Anuncio (titulo, contenido, id_autor, id_division, fecha_publicacion, tipo) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO Anuncio (titulo, contenido, id_autor, id_division, fecha_publicacion, tipo) VALUES (?,?,?,?,?,?)";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, anuncio.getTitulo());
@@ -26,11 +26,16 @@ public class AnuncioBD {
             ps.setInt(3, anuncio.getIdAutor());
             //Por si no pertenece a ninguna division
             if (anuncio.getIdDivision() != null) {
-                ps.setInt(4, anuncio.getIdAnuncio());
+                ps.setInt(4, anuncio.getIdDivision());
             } else {
                 ps.setNull(4, Types.INTEGER);
             }
-            ps.setDate(5, new Date(anuncio.getFechaPublicacion().getTime()));
+            if (anuncio.getFechaPublicacion() != null) {
+                ps.setDate(5, new Date(anuncio.getFechaPublicacion().getTime()));
+            } else {
+                ps.setDate(5, new Date(System.currentTimeMillis()));
+            }
+
             ps.setString(6, anuncio.getTipo());
             ps.executeUpdate();
             return true;

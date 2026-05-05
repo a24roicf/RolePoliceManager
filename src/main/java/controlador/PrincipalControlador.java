@@ -66,28 +66,14 @@ public class PrincipalControlador {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new JFrame("Anuncios");
-                frame.setSize(800, 600);
-
+                JFrame frame = new JFrame();
                 AnunciosVista vistaAnuncios = new AnunciosVista();
-                frame.add(vistaAnuncios);
-
+                new AnuncioControlador(vistaAnuncios, usuario);
+                frame.setContentPane(vistaAnuncios);
+                frame.setSize(800, 600);
                 frame.setLocationRelativeTo(null);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.setVisible(true);
-
-                // TEMP: prueba visual
-                vistaAnuncios.agregarTarjetaAnuncio(
-                        1,
-                        "Aviso general",
-                        "Esto es una prueba de anuncio",
-                        "general",
-                        "Admin",
-                        "04/06/2026",
-                        ev -> {
-                        },
-                        ev -> {
-                        }
-                );
             }
 
         };

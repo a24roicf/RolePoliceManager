@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import com.formdev.flatlaf.FlatClientProperties;
+import javax.swing.UIManager;
 
 /**
  *
@@ -30,7 +32,7 @@ public class AnunciosVista extends javax.swing.JPanel {
     
     private void configurarPanel(){
         panelAnuncios.setLayout(new BoxLayout(panelAnuncios, BoxLayout.Y_AXIS));
-        panelAnuncios.setBackground(Color.DARK_GRAY);
+        panelAnuncios.setBackground(UIManager.getColor("Panel.background"));
     }
 
     public void limpiarAnuncios() {
@@ -52,7 +54,7 @@ public class AnunciosVista extends javax.swing.JPanel {
         JPanel tarjeta = new JPanel();
         tarjeta.setLayout(new BorderLayout(10, 10));
         tarjeta.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1),
+                BorderFactory.createLineBorder(UIManager.getColor("Component.borderColor"),1),
                 BorderFactory.createEmptyBorder(15, 15, 15, 15)
         ));
         tarjeta.setMaximumSize(new Dimension(Integer.MAX_VALUE, 200));
@@ -73,6 +75,7 @@ public class AnunciosVista extends javax.swing.JPanel {
         JLabel lblTitulo = new JLabel(titulo);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 16));
         lblTitulo.setBorder(BorderFactory.createEmptyBorder(5,0,5,0));
+        lblTitulo.setForeground(UIManager.getColor("Label.foreground"));
         
         //Panel central (contenido del anuncio)
         JTextArea txtContenido = new JTextArea(titulo);
@@ -83,6 +86,7 @@ public class AnunciosVista extends javax.swing.JPanel {
         txtContenido.setRows(3);
         txtContenido.setOpaque(false);
         txtContenido.setBorder(null);
+        txtContenido.setForeground(UIManager.getColor("Label.foreground"));
         
         //Panel inferior (autor + fecha + botones de editar o eliminar)
         JPanel panelInferior = new JPanel(new BorderLayout());
@@ -91,7 +95,7 @@ public class AnunciosVista extends javax.swing.JPanel {
         //Info del autor y la fecha
         JLabel lblInfo = new JLabel("Por: " + autor + " | " + fecha);
         lblInfo.setFont(new Font("Arial", Font.ITALIC, 11));
-        lblInfo.setForeground(Color.LIGHT_GRAY);
+        lblInfo.setForeground(UIManager.getColor("Label.disabledForeground"));
         
         //Panel de los botones
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5,0));
@@ -103,7 +107,7 @@ public class AnunciosVista extends javax.swing.JPanel {
         
         JButton btnEliminar = new JButton("Eliminar");
         btnEliminar.setFocusPainted(false);
-        btnEliminar.setForeground(new Color(200,0,0));
+        btnEliminar.setForeground(new Color(239,68,68));
         btnEliminar.addActionListener(eliminarListener);
         
         panelBotones.add(btnEditar);
@@ -127,6 +131,7 @@ public class AnunciosVista extends javax.swing.JPanel {
         panelAnuncios.add(Box.createRigidArea(new Dimension(0,10)));    //Espacio entre cada tarjeta
     }
     
+    //TODO
     private String obtenerIconoTipo(String tipo){
         switch (tipo.toLowerCase()){
             case "urgente":
@@ -134,6 +139,8 @@ public class AnunciosVista extends javax.swing.JPanel {
             case "general":
                 return "";
             case "informativo":
+                return "";
+            case "division":
                 return "";
             default:
                 return "";
@@ -148,6 +155,8 @@ public class AnunciosVista extends javax.swing.JPanel {
                 return new Color(0,123,255);    //Azul
             case "informativo":
                 return new Color(40,167,69);    //Verde
+            case "division":
+                return new Color(255,193,7);    //Amarillo
             default:
                 return Color.DARK_GRAY;
         }
