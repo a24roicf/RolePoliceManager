@@ -115,7 +115,10 @@ public class AnuncioControlador {
         }
 
         anuncioBD.eliminarAnuncio(a.getIdAnuncio());
-
+        
+        //Log
+        logBD.insertarLog(usuario.getIdUsuario(), "BORRADO", "anuncios", "Elimino un anuncio");
+        
         cargarAnuncios();
     }
 }

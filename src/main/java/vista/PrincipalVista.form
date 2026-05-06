@@ -31,8 +31,11 @@
                   <Component id="btnLogs" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-              <Component id="btnAnuncios" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="121" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnNormativa" max="32767" attributes="0"/>
+                  <Component id="btnAnuncios" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="111" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -47,7 +50,10 @@
                   <Component id="btnAnuncios" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnLogs" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnLogs" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnNormativa" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="197" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -77,6 +83,11 @@
     <Component class="javax.swing.JButton" name="btnAnuncios">
       <Properties>
         <Property name="text" type="java.lang.String" value="Anuncios"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnNormativa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Normativas"/>
       </Properties>
     </Component>
   </SubComponents>

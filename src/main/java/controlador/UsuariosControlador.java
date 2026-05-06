@@ -35,10 +35,10 @@ public class UsuariosControlador {
         this.usuarioLogueado = usuario;
         this.logBD = new LogBD();
 
-        vista.addBtnAgregarListener(agregarUsuario());
-        vista.addBtnEliminarListener(eliminarUsuario());
-        vista.addBtnEditarListener(editarUsuario());
-        vista.addBuscarListener(filtrar());
+        this.vista.addBtnAgregarListener(agregarUsuario());
+        this.vista.addBtnEliminarListener(eliminarUsuario());
+        this.vista.addBtnEditarListener(editarUsuario());
+        this.vista.addBuscarListener(filtrar());
 
         cargarTabla();
     }
@@ -111,7 +111,7 @@ public class UsuariosControlador {
                 int id = (int) vista.getUsuariosTable().getValueAt(fila, 0);
 
                 bd.eliminarUsuario(id);
-                
+
                 //LOG
                 logBD.insertarLog(usuarioLogueado.getIdUsuario(), "BAJA", "usuarios", "Eliminó usuario ID: " + id);
 
@@ -181,7 +181,6 @@ public class UsuariosControlador {
             } else {
                 fechaUltimoAscenso = "";
             }*/
-
             modelo.addRow(new Object[]{
                 u.getIdUsuario(),
                 u.getEmail(),

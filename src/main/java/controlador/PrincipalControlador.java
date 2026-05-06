@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import modelo.Usuario;
 import vista.AnunciosVista;
 import vista.LogsVista;
+import vista.NormativasVista;
 import vista.PrincipalVista;
 import vista.UsuariosVista;
 
@@ -25,6 +26,7 @@ public class PrincipalControlador {
         this.vista.addBtnAdministrarUsuariosListener(getbtnAdministrarUsuarios());
         this.vista.addBtnRegistroLogsListener(getBtnRegistroLogs());
         this.vista.addBtnAnunciosListener(getBtnAnuncios());
+        this.vista.addBtnNormativasListener(getbtnNormativa());
         Permisos();
     }
 
@@ -85,5 +87,17 @@ public class PrincipalControlador {
             vista.btnAdministrarUsuariosEnable(false);
             vista.btnRegistroLogsEnable(false);
         }
+    }
+
+    private ActionListener getbtnNormativa() {
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NormativasVista vistaNormativas = new NormativasVista();
+                new NormativaControlador(vistaNormativas, usuario);
+                vistaNormativas.setVisible(true);
+            }
+        };
+        return al;
     }
 }
