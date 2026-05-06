@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Normativa;
 import modelo.Usuario;
 import vista.NormativasVista;
-//import vista.CrearModificarNormativaDialogVista;
+import vista.CrearModificarNormativaDialogVista;
 //import vista.VerNormativaDialogVista;
 
 /**
@@ -71,11 +71,11 @@ public class NormativaControlador {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //CrearModificarNormativaDialogVista cmndv = new CrearModificarNormativaDialogVista(vista, true);
-                //new CrearModificarNormativaControlador(cmndv, usuario);
+                CrearModificarNormativaDialogVista cmndv = new CrearModificarNormativaDialogVista(vista, true);
+                new CrearModificarNormativaControlador(cmndv, usuario);
 
-                //cmndv.setLocationRelativeTo(null);
-                //cmndv.setVisible(true);
+                cmndv.setLocationRelativeTo(null);
+                cmndv.setVisible(true);
                 cargarTabla();
             }
         };
@@ -97,10 +97,10 @@ public class NormativaControlador {
 
                 Normativa n = normativaBD.obtenerNormativaPorId(id);
 
-                //CrearModificarNormativaDialogVista cmndv = new CrearModificarNormativaDialogVista(vista, true);
-                //new CrearModificarNormativaControlador(cmndv, usuario, n);
-                //cmndv.setLocationRelativeTo(null);
-                //cmndv.setVisible(true);
+                CrearModificarNormativaDialogVista cmndv = new CrearModificarNormativaDialogVista(vista, true);
+                new CrearModificarNormativaControlador(cmndv, usuario, n);
+                cmndv.setLocationRelativeTo(null);
+                cmndv.setVisible(true);
                 cargarTabla();
             }
 
@@ -129,6 +129,9 @@ public class NormativaControlador {
 
                 normativaBD.eliminarNormativa(id);
 
+                //Log
+                logBD.insertarLog(usuario.getIdUsuario(), "BORRADO", "anuncios", "Elimino una normativa");
+                
                 cargarTabla();
             }
         };
