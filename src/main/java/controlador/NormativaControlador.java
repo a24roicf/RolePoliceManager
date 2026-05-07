@@ -12,6 +12,7 @@ import modelo.Normativa;
 import modelo.Usuario;
 import vista.NormativasVista;
 import vista.CrearModificarNormativaDialogVista;
+import vista.VerNormativaDialogVista;
 //import vista.VerNormativaDialogVista;
 
 /**
@@ -33,7 +34,7 @@ public class NormativaControlador {
         vista.addBtnAgregarListener(getBtnAgregarListener());
         vista.addBtnEditarListener(getBtnEditarListener());
         vista.addBtnEliminarListener(getBtnEliminarListener());
-        //vista.addBtnVerListener();
+        vista.addBtnVerListener(getBtnVerNormativa());
 
         cargarTabla();
         aplicarPermisos();
@@ -131,7 +132,7 @@ public class NormativaControlador {
 
                 //Log
                 logBD.insertarLog(usuario.getIdUsuario(), "BORRADO", "anuncios", "Elimino una normativa");
-                
+
                 cargarTabla();
             }
         };
@@ -153,14 +154,20 @@ public class NormativaControlador {
 
                 Normativa n = normativaBD.obtenerNormativaPorId(id);
 
-                //VerNormativaDialogVista vndv = new VerNormativaDialogVista(vista, true);
+                VerNormativaDialogVista vndv = new VerNormativaDialogVista(vista, true);
 
-                //vndv.setTitulo(n.getTitulo());
-                //vndv.setContenido(n.getContenido());
-                //vndv.setInfo("Por: " + n.getNombreAutor() + " | " + n.getFechaPublicacion());
+                vndv.setTituloNormativa(n.getTitulo());
+                vndv.setContenido(n.getContenido());
 
-                //vndv.setLocationRelativeTo(null);
-                //vndv.setVisible(true);
+                // Formatear la fecha
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaFormateada = n.getFechaPublicacion() != null
+                        ? sdf.format(n.getFechaPublicacion()) : "";
+
+                vndv.setInfo("Por: " + n.getNombreAutor() + " | " + fechaFormateada);
+
+                vndv.setLocationRelativeTo(null);
+                vndv.setVisible(true);
             }
         };
         return al;
