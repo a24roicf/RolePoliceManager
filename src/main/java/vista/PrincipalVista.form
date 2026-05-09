@@ -23,19 +23,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="bienvenidaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAdministrarUsuarios" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnLogs" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnDivisiones" max="32767" attributes="0"/>
                   <Component id="btnNormativa" max="32767" attributes="0"/>
-                  <Component id="btnAnuncios" max="32767" attributes="0"/>
+                  <Component id="btnAnuncios" min="-2" pref="94" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="111" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,7 +55,9 @@
                   <Component id="btnLogs" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnNormativa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="197" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnDivisiones" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="157" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,6 +91,11 @@
     <Component class="javax.swing.JButton" name="btnNormativa">
       <Properties>
         <Property name="text" type="java.lang.String" value="Normativas"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDivisiones">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Divisiones"/>
       </Properties>
     </Component>
   </SubComponents>

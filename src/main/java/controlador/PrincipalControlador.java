@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import vista.AnunciosVista;
+import vista.DivisionesVista;
 import vista.LogsVista;
 import vista.NormativasVista;
 import vista.PrincipalVista;
@@ -27,6 +28,7 @@ public class PrincipalControlador {
         this.vista.addBtnRegistroLogsListener(getBtnRegistroLogs());
         this.vista.addBtnAnunciosListener(getBtnAnuncios());
         this.vista.addBtnNormativasListener(getbtnNormativa());
+        this.vista.addBtnDivisionesListener(getbtnDivisiones());
         Permisos();
     }
 
@@ -96,6 +98,18 @@ public class PrincipalControlador {
                 NormativasVista vistaNormativas = new NormativasVista();
                 new NormativaControlador(vistaNormativas, usuario);
                 vistaNormativas.setVisible(true);
+            }
+        };
+        return al;
+    }
+
+    private ActionListener getbtnDivisiones() {
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DivisionesVista vistaDivisiones = new DivisionesVista();
+                new DivisionesControlador(vistaDivisiones, usuario);
+                vistaDivisiones.setVisible(true);
             }
         };
         return al;
