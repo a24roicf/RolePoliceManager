@@ -4,6 +4,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.util.List;
+import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import modelo.Division;
 
@@ -11,9 +14,9 @@ import modelo.Division;
  *
  * @author usuario
  */
-public class DivisionesVista extends javax.swing.JFrame {
+public class DivisionesVista extends JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DivisionesVista.class.getName());
+    private static final Logger logger = Logger.getLogger(DivisionesVista.class.getName());
     private DefaultTableModel modeloTabla;
 
     /**
@@ -55,8 +58,9 @@ public class DivisionesVista extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         btnGestionarMiembros = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tablaDivisiones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,6 +84,8 @@ public class DivisionesVista extends javax.swing.JFrame {
 
         btnGestionarMiembros.setText("Gestionar Miembros");
 
+        jLabel1.setText("Buscar:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +93,7 @@ public class DivisionesVista extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnGestionarMiembros)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -97,6 +103,8 @@ public class DivisionesVista extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCrear))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -105,7 +113,9 @@ public class DivisionesVista extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,19 +198,19 @@ public class DivisionesVista extends javax.swing.JFrame {
         tablaDivisiones.addMouseListener(listener);
     }
 
-    public javax.swing.JButton getBtnCrear() {
+    public JButton getBtnCrear() {
         return btnCrear;
     }
 
-    public javax.swing.JButton getBtnEditar() {
+    public JButton getBtnEditar() {
         return btnEditar;
     }
 
-    public javax.swing.JButton getBtnEliminar() {
+    public JButton getBtnEliminar() {
         return btnEliminar;
     }
 
-    public javax.swing.JButton getBtnGestionarMiembros() {
+    public JButton getBtnGestionarMiembros() {
         return btnGestionarMiembros;
     }
 
@@ -209,6 +219,7 @@ public class DivisionesVista extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGestionarMiembros;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaDivisiones;
     private javax.swing.JTextField txtBuscar;

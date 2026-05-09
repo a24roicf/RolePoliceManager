@@ -92,4 +92,9 @@ public class Usuario {
         this.nivelPermiso = nivelPermiso;
     }
     
+    @Override
+    public String toString(){
+        return nombreRol;
+    }
+    
 }
