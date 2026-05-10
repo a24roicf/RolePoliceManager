@@ -76,7 +76,7 @@ public class CrearModificarNormativaDialogVista extends javax.swing.JDialog {
         txtContenido.setRows(5);
         jScrollPane1.setViewportView(txtContenido);
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setText("Aceptar");
 
         btnCancelar.setText("Cancelar");
 

@@ -32,9 +32,12 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnDivisiones" max="32767" attributes="0"/>
-                  <Component id="btnNormativa" max="32767" attributes="0"/>
-                  <Component id="btnAnuncios" min="-2" pref="94" max="-2" attributes="0"/>
+                  <Component id="btnLicencias" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnDivisiones" max="32767" attributes="0"/>
+                      <Component id="btnNormativa" max="32767" attributes="0"/>
+                      <Component id="btnAnuncios" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -57,7 +60,9 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnDivisiones" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="157" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnLicencias" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="117" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,6 +101,11 @@
     <Component class="javax.swing.JButton" name="btnDivisiones">
       <Properties>
         <Property name="text" type="java.lang.String" value="Divisiones"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLicencias">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Licencias"/>
       </Properties>
     </Component>
   </SubComponents>
