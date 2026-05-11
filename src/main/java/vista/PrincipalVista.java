@@ -34,6 +34,7 @@ public class PrincipalVista extends javax.swing.JFrame {
         btnNormativa = new javax.swing.JButton();
         btnDivisiones = new javax.swing.JButton();
         btnLicencias = new javax.swing.JButton();
+        btnInformes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +53,8 @@ public class PrincipalVista extends javax.swing.JFrame {
 
         btnLicencias.setText("Licencias");
 
+        btnInformes.setText("Informes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,14 +64,14 @@ public class PrincipalVista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bienvenidaLabel)
                     .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInformes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLicencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnDivisiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNormativa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAnuncios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnDivisiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNormativa, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                    .addComponent(btnAnuncios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,7 +88,9 @@ public class PrincipalVista extends javax.swing.JFrame {
                     .addComponent(btnLogs)
                     .addComponent(btnNormativa))
                 .addGap(18, 18, 18)
-                .addComponent(btnDivisiones)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDivisiones)
+                    .addComponent(btnInformes))
                 .addGap(18, 18, 18)
                 .addComponent(btnLicencias)
                 .addContainerGap(117, Short.MAX_VALUE))
@@ -114,6 +119,10 @@ public class PrincipalVista extends javax.swing.JFrame {
         btnLogs.setEnabled(enable);
     }
     
+    public void btnInformesEnable(boolean enable){
+        btnInformes.setEnabled(enable);
+    }
+    
     public void addBtnAnunciosListener(ActionListener al){
         btnAnuncios.addActionListener(al);
     }
@@ -129,12 +138,17 @@ public class PrincipalVista extends javax.swing.JFrame {
     public void addBtnLicenciasListener(ActionListener al){
         btnLicencias.addActionListener(al);
     }
+    
+    public void addBtnInformesListener(ActionListener al){
+        btnInformes.addActionListener(al);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JButton btnAdministrarUsuarios;
     private javax.swing.JButton btnAnuncios;
     private javax.swing.JButton btnDivisiones;
+    private javax.swing.JButton btnInformes;
     private javax.swing.JButton btnLicencias;
     private javax.swing.JButton btnLogs;
     private javax.swing.JButton btnNormativa;

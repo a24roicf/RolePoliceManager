@@ -29,15 +29,14 @@
                   <Component id="bienvenidaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAdministrarUsuarios" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnLogs" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnInformes" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnLicencias" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnDivisiones" max="32767" attributes="0"/>
-                      <Component id="btnNormativa" max="32767" attributes="0"/>
-                      <Component id="btnAnuncios" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="btnDivisiones" max="32767" attributes="0"/>
+                  <Component id="btnNormativa" pref="144" max="32767" attributes="0"/>
+                  <Component id="btnAnuncios" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -59,7 +58,10 @@
                   <Component id="btnNormativa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnDivisiones" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnDivisiones" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnInformes" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnLicencias" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="117" max="32767" attributes="0"/>
@@ -106,6 +108,11 @@
     <Component class="javax.swing.JButton" name="btnLicencias">
       <Properties>
         <Property name="text" type="java.lang.String" value="Licencias"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnInformes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Informes"/>
       </Properties>
     </Component>
   </SubComponents>

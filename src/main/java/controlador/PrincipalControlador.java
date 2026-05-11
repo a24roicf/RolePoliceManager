@@ -3,10 +3,10 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import modelo.Usuario;
 import vista.AnunciosVista;
 import vista.DivisionesVista;
+import vista.InformesVista;
 import vista.LicenciasVista;
 import vista.LogsVista;
 import vista.NormativasVista;
@@ -31,6 +31,7 @@ public class PrincipalControlador {
         this.vista.addBtnNormativasListener(getbtnNormativa());
         this.vista.addBtnDivisionesListener(getbtnDivisiones());
         this.vista.addBtnLicenciasListener(getBtnLicencias());
+        this.vista.addBtnInformesListener(getbtnInformes());
         Permisos();
     }
 
@@ -38,13 +39,9 @@ public class PrincipalControlador {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (usuario.getNivelPermiso() >= 3) {
-                    UsuariosVista vistaUsuarios = new UsuariosVista();
-                    new UsuariosControlador(vistaUsuarios, usuario);
-                    vistaUsuarios.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(vista, "Acceso denegado");
-                }
+                UsuariosVista vistaUsuarios = new UsuariosVista();
+                new UsuariosControlador(vistaUsuarios, usuario);
+                vistaUsuarios.setVisible(true);
             }
         };
         return al;
@@ -54,15 +51,10 @@ public class PrincipalControlador {
         ActionListener al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if (usuario.getNivelPermiso() >= 3) {
-                    LogsVista vistaLogs = new LogsVista();
-                    new LogsControlador(vistaLogs, usuario);
-                    vistaLogs.setLocationRelativeTo(null);
-                    vistaLogs.setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(vista, "Acceso denegado");
-                }
+                LogsVista vistaLogs = new LogsVista();
+                new LogsControlador(vistaLogs, usuario);
+                vistaLogs.setLocationRelativeTo(null);
+                vistaLogs.setVisible(true);
             }
         };
         return al;
@@ -90,6 +82,9 @@ public class PrincipalControlador {
         if (usuario.getNivelPermiso() <= 2) {
             vista.btnAdministrarUsuariosEnable(false);
             vista.btnRegistroLogsEnable(false);
+        }
+        if (usuario.getNivelPermiso() < 2) {
+            vista.btnInformesEnable(false);
         }
     }
 
@@ -124,6 +119,18 @@ public class PrincipalControlador {
                 LicenciasVista vistaLicencias = new LicenciasVista();
                 new LicenciasControlador(vistaLicencias, usuario);
                 vistaLicencias.setVisible(true);
+            }
+        };
+        return al;
+    }
+
+    private ActionListener getbtnInformes() {
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InformesVista informesVista = new InformesVista();
+                new InformesControlador(informesVista, usuario);
+                informesVista.setVisible(true);
             }
         };
         return al;
