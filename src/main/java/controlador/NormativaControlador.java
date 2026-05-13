@@ -30,6 +30,7 @@ public class NormativaControlador {
         this.vista = vista;
         this.usuario = usuario;
         this.normativaBD = new NormativaBD();
+        this.logBD = new LogBD();
 
         vista.addBtnAgregarListener(getBtnAgregarListener());
         vista.addBtnEditarListener(getBtnEditarListener());
