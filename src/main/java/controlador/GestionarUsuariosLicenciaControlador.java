@@ -74,7 +74,8 @@ public class GestionarUsuariosLicenciaControlador {
                 }
 
                 // Asignar con fecha actual
-                boolean asignado = licenciaBD.asignarLicenciaAUsuario(usuarioSeleccionado.getIdUsuario(), idLicencia, (java.sql.Date) new Date());
+                Date fechaActual = new Date();
+                boolean asignado = licenciaBD.asignarLicenciaAUsuario(usuarioSeleccionado.getIdUsuario(), idLicencia, new java.sql.Date(fechaActual.getTime()));
 
                 if (asignado) {
                     JOptionPane.showMessageDialog(vista, "Licencia asignada correctamente");
