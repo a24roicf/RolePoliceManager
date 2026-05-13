@@ -11,6 +11,7 @@ import modelo.Usuario;
 import vista.UsuariosVista;
 import vista.CrearModificarUsuariosDialogVista;
 import BD.RangoBD;
+import java.util.ArrayList;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import modelo.Rango;
@@ -202,7 +203,7 @@ public class UsuariosControlador {
             private void filtrarLista() {
                 String texto = vista.getTextoBusqueda().toLowerCase();
 
-                List<Usuario> filtrada = new java.util.ArrayList<>();
+                List<Usuario> filtrada = new ArrayList<>();
 
                 for (Usuario u : listaOriginal) {
                     if (u.getEmail().toLowerCase().contains(texto)
