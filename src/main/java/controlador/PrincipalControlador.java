@@ -1,13 +1,16 @@
 package controlador;
 
+import BD.LogBD;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import modelo.Usuario;
 import vista.AnunciosVista;
 import vista.DivisionesVista;
 import vista.InformesVista;
 import vista.LicenciasVista;
+import vista.LoginVista;
 import vista.LogsVista;
 import vista.NormativasVista;
 import vista.PrincipalVista;
@@ -21,6 +24,7 @@ public class PrincipalControlador {
 
     private PrincipalVista vista;
     private Usuario usuario;
+    private LogBD logBD;
 
     public PrincipalControlador(PrincipalVista vista, Usuario usuario) {
         this.vista = vista;
@@ -32,6 +36,8 @@ public class PrincipalControlador {
         this.vista.addBtnDivisionesListener(getbtnDivisiones());
         this.vista.addBtnLicenciasListener(getBtnLicencias());
         this.vista.addBtnInformesListener(getbtnInformes());
+        this.vista.addBtnCerrarSesionListener(getBtnCerrarSesion());
+        this.logBD = new LogBD();
         Permisos();
     }
 
@@ -131,6 +137,30 @@ public class PrincipalControlador {
                 InformesVista informesVista = new InformesVista();
                 new InformesControlador(informesVista, usuario);
                 informesVista.setVisible(true);
+            }
+        };
+        return al;
+    }
+
+    private ActionListener getBtnCerrarSesion() {
+        ActionListener al = new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int confirmacion = JOptionPane.showConfirmDialog(vista, "¿Estás seguro de querer cerrar sesión?",
+                        "Confirmar cierre de sesión",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+                if (confirmacion == JOptionPane.YES_OPTION){
+                    //Log
+                    logBD.insertarLog(usuario.getIdUsuario(), "LOGOUT", "SESION", "Cerro sesion");
+                    
+                    vista.dispose();
+                    
+                    LoginVista vistaLogin = new LoginVista();
+                    new LoginControlador(vistaLogin);
+                    vistaLogin.setLocationRelativeTo(null);
+                    vistaLogin.setVisible(true);
+                }
             }
         };
         return al;
