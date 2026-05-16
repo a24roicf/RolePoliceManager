@@ -12,30 +12,37 @@
     </properties>
     <dependencies>
 
-    <!-- MariaDB -->
-    <dependency>
-        <groupId>org.mariadb.jdbc</groupId>
-        <artifactId>mariadb-java-client</artifactId>
-        <version>3.3.3</version>
-    </dependency>
+        <!-- MariaDB -->
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>3.3.3</version>
+        </dependency>
 
-    <!-- FlatLaf -->
-    <dependency>
-        <groupId>com.formdev</groupId>
-        <artifactId>flatlaf</artifactId>
-        <version>3.4</version>
-    </dependency>
+        <!-- FlatLaf -->
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.4</version>
+        </dependency>
 
-    <!-- JCalendar -->
-    <dependency>
-        <groupId>com.toedter</groupId>
-        <artifactId>jcalendar</artifactId>
-        <version>1.4</version>
-    </dependency>
+        <!-- JCalendar -->
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+        </dependency>
         <dependency>
             <groupId>org.netbeans.external</groupId>
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE290</version>
+        </dependency>
+        
+        <!-- JFreechart (tablas graficas)-->
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.4</version>
         </dependency>
     </dependencies>
 </project>
