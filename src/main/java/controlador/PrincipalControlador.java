@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import modelo.Usuario;
 import vista.AnunciosVista;
 import vista.DivisionesVista;
+import vista.EstadisticasVista;
 import vista.InformesVista;
 import vista.LicenciasVista;
 import vista.LoginVista;
@@ -37,6 +38,7 @@ public class PrincipalControlador {
         this.vista.addBtnLicenciasListener(getBtnLicencias());
         this.vista.addBtnInformesListener(getbtnInformes());
         this.vista.addBtnCerrarSesionListener(getBtnCerrarSesion());
+        this.vista.addBtnEstadisticasListener(getBtnEstadisticas());
         this.logBD = new LogBD();
         Permisos();
     }
@@ -161,6 +163,18 @@ public class PrincipalControlador {
                     vistaLogin.setLocationRelativeTo(null);
                     vistaLogin.setVisible(true);
                 }
+            }
+        };
+        return al;
+    }
+
+    private ActionListener getBtnEstadisticas() {
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EstadisticasVista vistaEstadisticas = new EstadisticasVista();
+                new EstadisticasControlador(vistaEstadisticas, usuario);
+                vistaEstadisticas.setVisible(true);
             }
         };
         return al;

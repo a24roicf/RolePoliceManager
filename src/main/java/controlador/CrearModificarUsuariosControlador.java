@@ -80,6 +80,17 @@ public class CrearModificarUsuariosControlador {
                 Date fechaIngreso = vista.getFechaIngreso();
                 Date fechaUltimoAscenso = vista.getFechaUltimoAscenso();
 
+                if (fechaIngreso != null && fechaUltimoAscenso != null) {
+                    //Si la fecha de ascenso es anterior a la de ingreso damos un aviso
+                    if (fechaUltimoAscenso.before(fechaIngreso)) {
+                        JOptionPane.showMessageDialog(
+                                vista,
+                                "La fecha del último ascenso no puede ser anterior a la fecha de ingreso"
+                        );
+                        return;
+                    }
+                }
+
                 if (nombre.isEmpty() || email.isEmpty()) {
                     JOptionPane.showMessageDialog(vista, "Rellene todos los campos");
                     return;

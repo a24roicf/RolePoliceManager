@@ -36,6 +36,7 @@ public class PrincipalVista extends javax.swing.JFrame {
         btnLicencias = new javax.swing.JButton();
         btnInformes = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
+        btnEstadisticas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,6 +59,8 @@ public class PrincipalVista extends javax.swing.JFrame {
 
         btnCerrarSesion.setText("Cerrar Sesion");
 
+        btnEstadisticas.setText("Estadisiticas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,7 +71,8 @@ public class PrincipalVista extends javax.swing.JFrame {
                     .addComponent(bienvenidaLabel)
                     .addComponent(btnAdministrarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLogs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnInformes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnInformes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEstadisticas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLicencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -99,7 +103,9 @@ public class PrincipalVista extends javax.swing.JFrame {
                     .addComponent(btnDivisiones)
                     .addComponent(btnInformes))
                 .addGap(18, 18, 18)
-                .addComponent(btnLicencias)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLicencias)
+                    .addComponent(btnEstadisticas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion)
                 .addContainerGap())
@@ -155,6 +161,10 @@ public class PrincipalVista extends javax.swing.JFrame {
     public void addBtnCerrarSesionListener(ActionListener al){
         btnCerrarSesion.addActionListener(al);
     }
+    
+    public void addBtnEstadisticasListener(ActionListener al){
+        btnEstadisticas.addActionListener(al);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenidaLabel;
@@ -162,6 +172,7 @@ public class PrincipalVista extends javax.swing.JFrame {
     private javax.swing.JButton btnAnuncios;
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnDivisiones;
+    private javax.swing.JButton btnEstadisticas;
     private javax.swing.JButton btnInformes;
     private javax.swing.JButton btnLicencias;
     private javax.swing.JButton btnLogs;

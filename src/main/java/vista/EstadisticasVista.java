@@ -1,10 +1,19 @@
 package vista;
 
+import java.awt.BorderLayout;
+import java.util.List;
 import javax.swing.JLabel;
+import modelo.Estadistica;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
- * @author usuario
+ * @author roi conles ferro
  */
 public class EstadisticasVista extends javax.swing.JFrame {
 
@@ -59,6 +68,7 @@ public class EstadisticasVista extends javax.swing.JFrame {
 
         jLabel2.setText("Usuarios");
 
+        lblNumeroUsuarios.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblNumeroUsuarios.setText("000");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -66,21 +76,18 @@ public class EstadisticasVista extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(lblNumeroUsuarios)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(lblNumeroUsuarios)
+                    .addComponent(jLabel2))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(lblNumeroUsuarios)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -89,11 +96,11 @@ public class EstadisticasVista extends javax.swing.JFrame {
         panelGraficoDivisiones.setLayout(panelGraficoDivisionesLayout);
         panelGraficoDivisionesLayout.setHorizontalGroup(
             panelGraficoDivisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGap(0, 569, Short.MAX_VALUE)
         );
         panelGraficoDivisionesLayout.setVerticalGroup(
             panelGraficoDivisionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
+            .addGap(0, 171, Short.MAX_VALUE)
         );
 
         tabbedPaneGraficos.addTab("Divisiones", panelGraficoDivisiones);
@@ -102,11 +109,11 @@ public class EstadisticasVista extends javax.swing.JFrame {
         panelGraficoLicencias.setLayout(panelGraficoLicenciasLayout);
         panelGraficoLicenciasLayout.setHorizontalGroup(
             panelGraficoLicenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGap(0, 569, Short.MAX_VALUE)
         );
         panelGraficoLicenciasLayout.setVerticalGroup(
             panelGraficoLicenciasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
+            .addGap(0, 171, Short.MAX_VALUE)
         );
 
         tabbedPaneGraficos.addTab("Licencias", panelGraficoLicencias);
@@ -115,11 +122,11 @@ public class EstadisticasVista extends javax.swing.JFrame {
         panelGraficoActividad.setLayout(panelGraficoActividadLayout);
         panelGraficoActividadLayout.setHorizontalGroup(
             panelGraficoActividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGap(0, 569, Short.MAX_VALUE)
         );
         panelGraficoActividadLayout.setVerticalGroup(
             panelGraficoActividadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
+            .addGap(0, 171, Short.MAX_VALUE)
         );
 
         tabbedPaneGraficos.addTab("Actividad", panelGraficoActividad);
@@ -128,17 +135,18 @@ public class EstadisticasVista extends javax.swing.JFrame {
         panelGraficoRangos.setLayout(panelGraficoRangosLayout);
         panelGraficoRangosLayout.setHorizontalGroup(
             panelGraficoRangosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGap(0, 569, Short.MAX_VALUE)
         );
         panelGraficoRangosLayout.setVerticalGroup(
             panelGraficoRangosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
+            .addGap(0, 171, Short.MAX_VALUE)
         );
 
         tabbedPaneGraficos.addTab("Rangos", panelGraficoRangos);
 
         jLabel3.setText("Divisiones");
 
+        lblNumeroDivisiones.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblNumeroDivisiones.setText("000");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -151,7 +159,7 @@ public class EstadisticasVista extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(31, 31, 31)
                         .addComponent(lblNumeroDivisiones)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -160,13 +168,14 @@ public class EstadisticasVista extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addComponent(lblNumeroDivisiones)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel4.setText("Licencias");
 
+        lblNumeroLicencias.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblNumeroLicencias.setText("000");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -174,11 +183,12 @@ public class EstadisticasVista extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addComponent(lblNumeroLicencias)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -187,13 +197,14 @@ public class EstadisticasVista extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(lblNumeroLicencias)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel5.setText("Informes");
 
+        lblNumeroInformes.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblNumeroInformes.setText("000");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -203,24 +214,23 @@ public class EstadisticasVista extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lblNumeroInformes)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(lblNumeroInformes)
+                    .addComponent(jLabel5))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel5)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(lblNumeroInformes)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel6.setText("Anuncios");
 
+        lblNumeroAnuncios.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblNumeroAnuncios.setText("000");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -230,10 +240,8 @@ public class EstadisticasVista extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(lblNumeroAnuncios)))
+                    .addComponent(lblNumeroAnuncios)
+                    .addComponent(jLabel6))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -241,13 +249,14 @@ public class EstadisticasVista extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel6)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(lblNumeroAnuncios)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel7.setText("Logs");
 
+        lblNumeroLogs.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         lblNumeroLogs.setText("000");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -266,9 +275,9 @@ public class EstadisticasVista extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel7)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(lblNumeroLogs)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -365,7 +374,126 @@ public class EstadisticasVista extends javax.swing.JFrame {
     public void setLblNumeroUsuarios(String t) {
         this.lblNumeroUsuarios.setText(t);
     }
-    
+
+    // Método para establecer el resumen, los 6 números
+    public void setResumen(int usuarios, int divisiones, int licencias, int informes, int anuncios, int logs) {
+        setLblNumeroUsuarios(String.valueOf(usuarios));
+        setLblNumeroDivisiones(String.valueOf(divisiones));
+        setLblNumeroLicencias(String.valueOf(licencias));
+        setLblNumeroInformes(String.valueOf(informes));
+        setLblNumeroAnuncios(String.valueOf(anuncios));
+        setLblNumeroLogs(String.valueOf(logs));
+    }
+
+    //Metodo para cargar grafico de barras > Divisiones
+    public void cargarGraficoDivisiones(List<Estadistica> datos) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        //Recorremos los datos
+        for (Estadistica stat : datos) {
+            dataset.addValue(stat.getValor(), "Usuarios", stat.getNombre());    //Añade: valor, usuarios y nombre
+        }
+
+        //Creacion del grafico de barras > Titulo > Eje X > Eje Y > Datos > Orientacion vertical > Leyenda > Tooltips > URLs
+        JFreeChart chart = ChartFactory.createBarChart("Distribución de Usuarios por División",
+                "División",
+                "Número de Usuarios",
+                dataset,
+                PlotOrientation.VERTICAL, false, true, false);
+
+        //Panel que contiene el grafico
+        ChartPanel chartPanel = new ChartPanel(chart);
+
+        panelGraficoDivisiones.removeAll();                             //Limpiamos el panel
+        panelGraficoDivisiones.setLayout(new BorderLayout());           //Layout del panel
+        panelGraficoDivisiones.add(chartPanel, BorderLayout.CENTER);    //Añade el grafico al centro
+        panelGraficoDivisiones.validate();                              //Actualiza el panel
+        panelGraficoDivisiones.repaint();                               //Dibuja el grafico
+    }
+
+    //Metodo para cargar grafico de tarta > Licencias
+    public void cargarGraficoLicencias(List<Estadistica> datos) {
+        DefaultPieDataset dataset = new DefaultPieDataset();
+
+        //Recorremos los datos
+        for (Estadistica stat : datos) {
+            dataset.setValue(stat.getNombre(), stat.getValor());
+        }
+
+        JFreeChart chart = ChartFactory.createPieChart(
+                "Licencias Más Asignadas",
+                dataset,
+                true,
+                true,
+                false
+        );
+
+        ChartPanel chartPanel = new ChartPanel(chart);
+
+        panelGraficoLicencias.removeAll();
+        panelGraficoLicencias.setLayout(new BorderLayout());
+        panelGraficoLicencias.add(chartPanel, BorderLayout.CENTER);
+        panelGraficoLicencias.validate();
+        panelGraficoLicencias.repaint();
+    }
+
+    //Metodo para cargar grafico de barras > Actividad
+    public void cargarGraficoActividad(List<Estadistica> datos) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        //Recorremos los datos
+        for (Estadistica stat : datos) {
+            dataset.addValue(stat.getValor(), "Acciones", stat.getNombre());
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Actividad por Módulo",
+                "Módulo",
+                "Número de Acciones",
+                dataset,
+                PlotOrientation.HORIZONTAL,
+                false,
+                true,
+                false
+        );
+
+        ChartPanel chartPanel = new ChartPanel(chart);
+
+        panelGraficoActividad.removeAll();
+        panelGraficoActividad.setLayout(new BorderLayout());
+        panelGraficoActividad.add(chartPanel, BorderLayout.CENTER);
+        panelGraficoActividad.validate();
+        panelGraficoActividad.repaint();
+    }
+
+    //Método para cargar gráfico de barras > Rangos
+    public void cargarGraficoRangos(List<Estadistica> datos) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        //Recorremos los datos
+        for (Estadistica stat : datos) {
+            dataset.addValue(stat.getValor(), "Usuarios", stat.getNombre());
+        }
+
+        JFreeChart chart = ChartFactory.createBarChart(
+                "Distribución de Usuarios por Rango",
+                "Rango",
+                "Número de Usuarios",
+                dataset,
+                PlotOrientation.VERTICAL,
+                false,
+                true,
+                false
+        );
+
+        ChartPanel chartPanel = new ChartPanel(chart);
+
+        panelGraficoRangos.removeAll();
+        panelGraficoRangos.setLayout(new BorderLayout());
+        panelGraficoRangos.add(chartPanel, BorderLayout.CENTER);
+        panelGraficoRangos.validate();
+        panelGraficoRangos.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

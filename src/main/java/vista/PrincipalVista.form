@@ -30,6 +30,7 @@
                   <Component id="btnAdministrarUsuarios" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnLogs" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnInformes" max="32767" attributes="0"/>
+                  <Component id="btnEstadisticas" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -68,7 +69,10 @@
                   <Component id="btnInformes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btnLicencias" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnLicencias" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnEstadisticas" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="89" max="32767" attributes="0"/>
               <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -125,6 +129,11 @@
     <Component class="javax.swing.JButton" name="btnCerrarSesion">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cerrar Sesion"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnEstadisticas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Estadisiticas"/>
       </Properties>
     </Component>
   </SubComponents>
