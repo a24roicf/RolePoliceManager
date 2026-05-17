@@ -138,6 +138,10 @@ public class PrincipalVista extends javax.swing.JFrame {
         btnInformes.setEnabled(enable);
     }
     
+    public void btnEstadisticasEnable(boolean enable) {
+        btnEstadisticas.setEnabled(enable);
+    }
+    
     public void addBtnAnunciosListener(ActionListener al){
         btnAnuncios.addActionListener(al);
     }

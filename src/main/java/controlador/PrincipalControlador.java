@@ -90,6 +90,7 @@ public class PrincipalControlador {
         if (usuario.getNivelPermiso() <= 2) {
             vista.btnAdministrarUsuariosEnable(false);
             vista.btnRegistroLogsEnable(false);
+            vista.btnEstadisticasEnable(false);
         }
         if (usuario.getNivelPermiso() < 2) {
             vista.btnInformesEnable(false);
